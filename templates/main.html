@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAFE</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Sedan+SC&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <nav id="navbar">
+        <a id="logo" href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="SAFE.com">
+        </a>
+        <ul id="left-part">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('personal_info') }}">Personal Info</a></li>
+            <li><a href="{{ url_for('about_us') }}">About Us</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="left-section">
+            <div class="main-content">
+                <h1 class="main-heading h-primary">SAFE</h1>
+                <h2 class="sub-heading"><u>S</u>afety <u>A</u>lert for <u>F</u>inite <u>E</u>nvironment</h2>
+                <p>Safe is a comprehensive safety platform designed to protect girls and women through real-time
+                    tracking, emergency alerts, and secure communication channels. It empowers users with tools to
+                    ensure their safety and well-being in any situation. Stay connected, stay safe with Safe.</p>
+                <!-- <a href="main.html" class="cta-button">Emergency</a> -->
+                <button id="cta-button">Emergency</button>
+
+                <div id="location-list"></div>
+            </div>
+        </div>
+        <div class="right-section">
+            <img src="{{ url_for('static', filename='img/Bg.png') }}" alt="SAFE Logo" class="safe-image">
+        </div>
+    </div>
+    <footer>Copyright &copy; All right reserved.</footer>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script>
+        const socket = io.connect('http://' + document.domain + ':' + location.port);
+
+        document.getElementById('cta-button').addEventListener('click', () => {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(position => {
+                    const locationData = {
+                        latitude: position.coords.latitude,
+                        longitude: position.coords.longitude,
+                        timestamp: new Date().toLocaleString()
+                    };
+                    socket.emit('send_location', locationData);
+                });
+            } else {
+                alert('Geolocation is not supported by this browser.');
+            }
+        });
+
+        // Receive broadcasted location data and display it
+        socket.on('broadcast_location', data => {
+            const locationList = document.getElementById('location-list');
+            const locationItem = document.createElement('div');
+            locationItem.className = 'location-item';
+            locationItem.innerHTML = `
+                <strong>Latitude:</strong> ${data.latitude}<br>
+                <strong>Longitude:</strong> ${data.longitude}<br>
+                <strong>Time:</strong> ${data.timestamp}
+            `;
+            locationList.prepend(locationItem);
+        });
+    </script>
+</body>
+
+</html>

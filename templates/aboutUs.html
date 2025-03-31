@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/aboutUs.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Sedan+SC&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav id="navbar">
+        <a id="logo" href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="SAFE.com">
+        </a>
+        <ul id="left-part">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('personal_info') }}">Personal Info</a></li>
+            <li><a href="{{ url_for('about_us') }}">About Us</a></li>
+        </ul>
+        <ul id="right-part">
+            <li><a href="login.html">Login</a></li>
+            <div class="divider"></div>
+            <li><a href="SignUp.html">Sign In</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h2>About Us</h2>
+        <p>The main moto of this application is to ensure safety for girls.</p>
+        <div class="description">
+            <h4>What We Do...</h4>
+            <ul>
+                <li>This application shares the live location of the people in danger with in a certain range.</li>
+                <li>Building an world where safety is not merely a form but also a fact</li>
+                <li>Urafe is secure,private and easy-to-use.Get alerts for the one who are near to your modified radius
+                    and your loved ones</li>
+                <li>When it comes to protecting the ones you care about,we're here for you to protect</li>
+                <li>The user can modify the Information which will be shared</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

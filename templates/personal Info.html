@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Info - SAFE</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/personal_Info.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Sedan+SC&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav id="navbar">
+        <a id="logo" href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="SAFE.com">
+        </a>
+        <ul id="left-part">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('personal_info') }}">Personal Info</a></li>
+            <li><a href="{{ url_for('about_us') }}">About Us</a></li>
+        </ul>
+        <ul id="right-part">
+            <li><a href="login.html">Login</a></li>
+            <div class="divider"></div>
+            <li><a href="SignUp.html">Sign In</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>My Personal Info</h1>
+        <div class="section" id="profile-overview">
+            <h2>Profile Overview</h2>
+            <input type="text" placeholder="Name" id="name">
+            <input type="text" placeholder="User ID" id="userId">
+            <textarea placeholder="Short description or quote" id="description"></textarea>
+        </div>
+        <div class="section" id="contact-info">
+            <h2>Contact Information</h2>
+            <input type="email" placeholder="Email Address" id="email">
+            <input type="tel" placeholder="Phone Number" id="phone">
+            <input type="tel" placeholder="Emergency Contact Number" id="emergencyContact">
+            <p class="info">Keep this info updated for safety alerts.</p>
+        </div>
+        <div class="section" id="location-settings">
+            <h2>Location Settings</h2>
+            <input type="text" placeholder="Home Address" id="homeAddress">
+            <input type="text" placeholder="School Address" id="schoolAddress">
+            <input type="text" placeholder="Frequently Visited Locations" id="frequentLocations">
+            <div class="toggle">
+                <label><input type="checkbox" id="locationSharing"> Enable Location Sharing</label>
+            </div>
+            <p class="info">Location data is used only in emergencies and will not be shared without consent.</p>
+        </div>
+        <div class="section" id="emergency-contacts">
+            <h2>Emergency Contacts</h2>
+            <input type="text" placeholder="Contact Name" id="emergencyContactName">
+            <input type="tel" placeholder="Contact Phone Number" id="emergencyContactPhone">
+            <input type="text" placeholder="Relationship" id="contactRelationship">
+        </div>
+        <div class="section" id="safety-preferences">
+            <h2>Safety Preferences</h2>
+            <label><input type="checkbox" id="smsAlerts"> SMS Alerts</label><br>
+            <label><input type="checkbox" id="emailAlerts"> Email Alerts</label><br>
+            <label><input type="checkbox" id="pushNotifications"> Push Notifications</label>
+        </div>
+        <div class="section" id="profile-security">
+            <h2>Profile Security</h2>
+            <input type="password" placeholder="Password" id="password">
+            <input type="password" placeholder="Confirm Password" id="confirmPassword">
+            <div class="toggle">
+                <label><input type="checkbox" id="twoFactorAuth"> Enable Two-Factor Authentication</label>
+            </div>
+        </div>
+        <div class="section" id="consent-privacy">
+            <h2>Consent and Privacy Settings</h2>
+            <textarea placeholder="Consent for data usage..." id="consentText"></textarea>
+            <p class="info">Review our <a href="#privacy-policy">Privacy Policy</a> for more information.</p>
+        </div>
+        <button onclick="saveChanges()">Save Changes</button>
+        <button onclick="contactSupport()">Contact Support</button>
+    </div>
+
+    <script>
+        function saveChanges() {
+            alert("Your changes have been saved successfully!");
+            // Implement save functionality
+        }
+
+        function contactSupport() {
+            alert("Contact support at support@example.com");
+            // Implement contact support functionality
+        }
+    </script>
+</body>
+
+</html>
