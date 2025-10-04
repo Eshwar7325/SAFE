@@ -44,7 +44,7 @@
     <footer>Copyright &copy; All right reserved.</footer>
     <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
     <script>
-        const socket = io.connect('http://' + document.domain + ':' + location.port);
+        const socket = io();
 
         document.getElementById('cta-button').addEventListener('click', () => {
             if (navigator.geolocation) {
